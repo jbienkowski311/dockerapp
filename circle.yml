@@ -22,8 +22,8 @@ deployment:
       - docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
       - docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
       - docker push $DOCKER_HUB_USER_ID/dockerapp:latest
-
   staging:
-    branch: master
-    heroku:
-      appname: jbienkowski-dockerapp
+    branch: [staging]
+    codedeploy:
+      docker-app:
+        deployment_group: docker-app-deploy
